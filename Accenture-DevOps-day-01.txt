@@ -154,6 +154,9 @@ Step 6) Setup the repo to install the required packages (Ansible/Maven/Nexus,Jen
   
   
   
+Yum configuration base URL-  
+https://mirror.centos.org/centos/8-stream/BaseOS
+https://mirror.centos.org/centos/8-stream/AppStream
    
  
 

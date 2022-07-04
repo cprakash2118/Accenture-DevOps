@@ -1,0 +1,175 @@
+
+ Business (Project)
+ https://bookmyshow
+ 
+ Applications involved 
+  website 
+  booking 
+  payment 
+  location 
+  ack 
+  notification 
+  etc 
+  Same as DataBase also involved.
+================================
+  Ansible Automation:-
+  3 VMs/Servers
+  CentOS1  - 192.168.14.128
+  CentOS2  - 192.168.14.129
+  CentOS3  - 192.168.14.130
+
+  root/rps (User=root, and password=rps)
+========================
+
+Step 1) 
+ - Login to your VMs machines (centOS system) using root account (root's password given).
+ - Open terminal and type below command (To get the IP address of your system).
+   # ifconfig | grep inet | grep 192
+  NOte: Do the same for all 3 VMs and get the IP address.
+  
+  
+Step 2) 
+Setup hostname and check remote connectivity.
+
+  CentOS1  - 192.168.14.128  (Hostname - centos-01.acc.com)
+  CentOS2  - 192.168.14.129  (hostname - centos-02.acc.com)
+  CentOS3  - 192.168.14.130  (hostname - centos-03.acc.com)
+  
+  acc.com          - Domain name 
+  192.168.14.0/24  - Network 
+  
+  if hostname or server name like 
+  centos-01.acc.com    -   192.168.14.128/24 
+  centos-02.acc.com    -   192.168.14.129/24 
+  centos-03.acc.com    -   192.168.14.130/24 
+  
+  # hostnamectl set-hostname centos-01.acc.com 
+  
+  Note: Do the same for all 3 VMs and setup the correct hostname.
+
+Step 3) Verify the hostname and ip address.
+  # hostname -s    (Hostname or server name )
+  # hostname -d    (Domain name )
+  # hostname -f    ( Fully qulified domain name = hostname + Domain name)
+  
+
+Step 4) Setup the hosts details on "/etc/hosts"
+ # vim /etc/hosts
+  192.168.14.128  centos-01.acc.com   centos-01
+  192.168.14.129  centos-02.acc.com   centos-02
+  192.168.14.130  centos-03.acc.com   centos-03
+
+ Note: Save this file.
+ 
+
+Step 5) Ping the other servers using IP or Name or Fully Qulified name.
+  # ping -c 2 192.168.14.128
+  or
+  # ping -c 2 centos-01 
+  or 
+  # ping -c 2 centos-01.acc.com 
+  
+
+Step 6) Setup the repo to install the required packages (Ansible/Maven/Nexus,Jenkins/CI/CD).
+  - MOunt the CentOS iso (From Base machine).
+  - Create Base repo (BaseOS and AppStream)
+  - cd /etc/yum.repos.d/
+  - vim any_name.repo 
+   [baseOS]
+   name = AYX 
+   baseurl = file:///Location_path _of_your_BASE_repo
+   gpgcheck = 0
+   enabled = 1 
+
+   [AppStream]
+   name = AppStream
+   baseurl = file:///Location_path _of_your_AppStream_repo
+   gpgcheck = 0
+   enabled = 1   
+   
+   
+   # yum clean all 
+   # yum install ansible 
+   # yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+   # yum install ansible -y 
+    or above command unable to install Ansible in your current system then 
+   # yum install python3-pip
+   # pip install ansible --user 
+   
+   
+   NOte: Where you have installed anisble, That machine/server/VMs/System called "Control node" 
+     Control node is the system/server where we have installed ansible (Ansible is a Automation platform build in python).
+	 
+	 centos-01 - Control node (anisble installed - Python must be installed before Ansible) 
+	 centos-02 - managed host (Python must be installed, Already python installed on RHEL or CentOS machine).
+	 centos-03 - managed host 
+	 
+	 
+	 # ansible --version  (This command's output show details about ansible.cfg file and other)
+	 
+	 # ansible.cfg and inventory (Files belongs to Ansible Configuration)
+	 
+	 ansible.cfg      - Configuration file 
+	 inventory file   - Servers details  (Web, Applications-Server, DB-Servers, Build-Servers (CI/CD setup on build servers).  
+	 
+	 Default location of "ansible.cfg" file is - /etc/ansible/ansible.cfg 
+	 Default inventory file - /etc/ansible/hosts 
+	 
+	 
+	 vim inventory
+	 [web]
+	 centos-02.acc.com 
+	 
+	 [db]
+	 centos-03.acc.com 
+	 
+	 [build-env]
+	 centos-[11:20].acc.com 
+     	 
+	 
+	 Note: "web" is your host group and inside "web" host group you have centos-02.acc.com server 
+=======================================================================================
+ - What is Ansible?
+   Ansible is OpenSource (OSS) Automation Platform (Build in Python and PowerShell).
+   Ansible can automate servers (Linux/UNIX/Windows) and Network Devices (Router & Switches).
+   Ansible majorly used for below 5 points.
+   1) Application Deployment (index.html or index.php or java_project.war)
+   2) WorkFlow automation 
+   3) Configuration Management
+   4) Network Automation 
+   5) Infrastructure Orchestration (Complete product life cycle deployment).
+   
+- Ansible setup 
+  Install ansible on Linux/Unix system/server - This server considered as controle machine 
+  Then you execute playbook or ad-hoc commands from controle machine.
+  
+  ansible (Used for to run the ad-hoc command)
+  ansible-playbook (Used for to run the playbook)
+  ansible-doc     ((Used for to refer ansible modules)
+  
+  It is important which "ansible.cfg" file used
+  Inside "ansible.cfg" file you have define all environment.
+  
+  ansible --version (It provides all required details about ansible configuration).
+  
+  
+  
+   
+ 
+
+  
+
+
+
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+    

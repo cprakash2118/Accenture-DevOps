@@ -137,6 +137,52 @@ Step 1) Setup the hostname and configure the required environment.
  
  ###########################
  Step 3) 
+
+Need to do in all systems (control node + Managed hosts)
+ User creation as per the case 
+ 1) devops-user-01 
+ 2) devops-user-02 
+
+ # useradd   devops-user-01
+ # echo "lab" | passwd --stdin devops-user-01
+ # su - devops-user-01
+ $ ssh-keygen -t rsa 
+ Enter 
+ Enter 
+ Enter 
+ 
+ Note: It will create keys (as we should be about to do key based authentication).
+ 
+ $ pwd
+ $ /home/devops-user-01
+ $ ls -la 
+ $ cd .ssh 
+ $ ls
+  id_rsa  id_rsa.pub
+
+   NOte: "id_rsa" is your private key and "id_rsa.pub" is your public key.  
+   
+ $ ssh-copy-id centos-7-02.acc.com 
+ password: 
+ 
+ Note: One time it will ask for password.
+ 
+  $ ssh-copy-id centos-7-03.acc.com 
+ password: 
+ 
+ NOw verify your access 
+ $ ssh centos-7-02.acc.com 
+ 
+  ###########################
+ Step 4)
+ ssh centos-7-02
+ visudo 
+  devops-user-01   ALL=(ALL)   ALL
+  devops-user-02   ALL=(ALL)   NOPASSWD: ALL
+  
+  NOte: This we need to do on all the servers.
+  
+ 
  
 
  

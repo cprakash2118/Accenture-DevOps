@@ -142,6 +142,7 @@ Need to do in all systems (control node + Managed hosts)
  User creation as per the case 
  1) devops-user-01 
  2) devops-user-02 
+ 3) devops-user-03
 
  # useradd   devops-user-01
  # echo "lab" | passwd --stdin devops-user-01
@@ -179,9 +180,132 @@ Need to do in all systems (control node + Managed hosts)
  visudo 
   devops-user-01   ALL=(ALL)   ALL
   devops-user-02   ALL=(ALL)   NOPASSWD: ALL
-  
+  devops-user-03   ALL=(ALL)   ALL
   NOte: This we need to do on all the servers.
   
+  
+  
+ Note: **** 
+ Case 1st - (Username= devops-user-01) - Passwordless authentication and with password authorization. 
+ Case 2nd - (Username= devops-user-02) - Passwordless authentication and passwordless authorization. 
+ Case 3rd - (Username= devops-user-03) - With Password authentication and with password authorization.
+
+==========================================
+Verify the Ansible setup 
+
+login to devops-user-02 
+# su - devops-user-02 
+$ ansible --version 
+
+Ansible Version details 
+Python Version Details 
+Ansible Python module 
+Ansible configuration details ("ansible.cfg" file).
+
+ - Priorites of "ansible.cfg" file.
+   
+   1) ANSIBLE_CONFIG variable must be defined and carry the "ansible.cfg" file as well. 
+   
+   $ env | grep ANSIBLE_CONFIG                     (Checking if the ANSIBLE_CONFIG variable defined or not)
+   $ export ANSIBLE_CONFIG=/var/tmp/ansible.cfg    (Defining the ANSIBLE_CONFIG file)
+   $ touch /var/tmp/ansible.cfg                    (update/Create the file content as per your requirment).
+   
+   
+   
+   2) The file "ansible.cfg" must be on current working directory.
+      Current working directory - Where you run/execute ansible* command 
+	  
+   3) The file ".ansible.cfg" must be on user's home directory.
+       /home/devops-user-02/.ansible.cfg 
+
+   4) The main configuration file.
+      /etc/ansible/ansible.cfg 
+	  
+
+   - Inventory file 
+    
+	 When you consider file "ansible.cfg" then 1st option [defaults] inside your "ansible.cfg" file.
+	 
+	 $ whoami
+	 cprakash
+	 $ touch ansible.cfg 
+	 $ vim ansible.cfg 
+	  [defaults]
+	  inventory = ./inventory 
+	  remote_user = devops-user-01 
+	  ask_pass = False 
+	  
+	  [privilege_escalation]
+	   become = True 
+	   become_user = root
+	   become_method = sudo 
+	   become_ask_pass = false 
+	   
+	   
+	   Note: *** 
+	   [defaults]     - Ansible Configuration customaization.
+	   - inventory    - Describe the location and file name of the inventory file.
+	   - remote_user  - User involved with execution on managed host.
+	   - ask_pass     - If ask_pass true it mean it will alway ask password.
+	   
+	   [privilege_escalation]   - When you do privilege escalation to perform the opeartions on managed hosts.
+	   become - It allow to switch from one user to another 
+	   become_method - sudo 
+	   become_root - root account 
+	   become_ask_pass = sudo account if this option ture.
+	   
+	   
+ ============= Inventory file 
+   - Inventory file keeps the servers details, as given in example.
+   
+    [prod]
+	server-01.example.com 
+	server-02.example.com 
+	server-03.example.com
+    server-[04:10].example.com 	
+	
+	[Stag]
+	server[11:15].example.com 
+   
+   
+    [dev]
+	server[21:25].example.com 
+	
+	[non-prod:childran]
+	Stag 
+	dev 
+	
+	[ip]
+	172.168.[1:3].[21:23]
+	
+	
+	
+	prod, Stag, dev,non-prod,ip   - host group and "non-prod" is a parent of "Stage" and Dev".
+	"non-prod" is also host group.
+	
+	
+	  
+	  
+	  
+	  Note: **
+	  
+	 
+
+   
+	 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
  
  
 

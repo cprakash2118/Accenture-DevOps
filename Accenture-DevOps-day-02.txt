@@ -75,6 +75,29 @@ centos7-01
 centos7-02 
 centos7-03 
 
+============================================
+Phase 2nd 
+ONce all virtual machines ready (installed), Login to those VMs one by one and setup the environment.
+
+- Login to centos7-01 VM as "root" user and password for root acount is "lab".
+- #ifconfig | grep inet | grep 192
+
+hostname          IP address          Domain 
+centos7-01   - 192.168.14.132/24     acc.com 
+centos7-02   - 192.168.14.133/24     acc.com 
+centos7-03   - 192.168.14.134/24     acc.com 
+
+Note: Using "ifconfig" command, collected the above information.
+
+
+Step 1) Setup the hostname and configure the required environment.
+ 
+ # hostnamectl set-hostname centos7-01.acc.com 
+
+
+
+
+
 
 
 

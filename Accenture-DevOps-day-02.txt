@@ -93,6 +93,39 @@ Note: Using "ifconfig" command, collected the above information.
 Step 1) Setup the hostname and configure the required environment.
  
  # hostnamectl set-hostname centos7-01.acc.com 
+  - To verify the hostname and Domain name.
+
+ # hostname -s    (hostname)
+ # hostname -d    (domain name)
+ # hostname -f    (FQDN).
+ 
+ # vim /etc/hosts
+ 192.168.14.132   centos7-01.acc.com  centos7-01
+ 192.168.14.133   centos7-02.acc.com  centos7-02
+ 192.168.14.134   centos7-03.acc.com  centos7-03
+ 
+ :wq 
+ Note: Save above entries 
+ 
+ 
+ 
+ Step 2) COnfigure repo and install required packages (software).
+ 
+ # yum install epel-release 
+ # yum install ansible 
+ 
+ 
+ To verify the installation 
+ 
+ # ansible --version 
+ Ansile 2.9 
+ Python 2.7 
+ 
+ 
+ # 
+ 
+ 
+ 
 
 
 

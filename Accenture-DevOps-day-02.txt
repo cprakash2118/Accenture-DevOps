@@ -36,8 +36,10 @@ Centos7 - using this image, we will create 3 VMs
 
 Note: Before create new VMs, we will shutdown the CentOS1/2/3. 
 
+
 Create 3 virtual machine as per the resources.
 
+Step 1)
 file -> "New Virtual Machine" -> Continue with defaukt option "Typical - Recommended" --> Slect "Installer disk_image_file (ISO)
 Click on "Next" and provide below details one by one.
 
@@ -46,6 +48,7 @@ user: lab
 passwd: lab 
 NOte: root password also "lab".
 
+Step 2)
 Provide your virtual machine name as below one by one.
 centos7-01 
 centos7-02
@@ -55,16 +58,22 @@ Note: Resource Alocation - 3GB RAM, 40GB disk, 1 CPU.
 Specify the storage and click on "Next" 
 Storage = 40G 
 
-
+Step 3) 
 Then click on "Customize hardware" then setup memory 3 GB
 and finish.
 
+Do the same for 02/03 with below infromation.
 Name: centos7-01,centos7-02,centos7-03 
 user: lab 
 passwd: lab 
 NOte: root password also "lab".
 
-Virtual Machine name: centos7-01 /02 /03 
+
+
+New Virtual machine (VMs) as per below.
+centos7-01 
+centos7-02 
+centos7-03 
 
 
 

@@ -1,0 +1,86 @@
+=======================================================================================
+ - What is Ansible?
+   Ansible is OpenSource (OSS) Automation Platform (Build in Python and PowerShell).
+   Ansible can automate servers (Linux/UNIX/Windows) and Network Devices (Router & Switches).
+   Ansible majorly used for below 5 points.
+   1) Application Deployment (index.html or index.php or java_project.war)
+   2) WorkFlow automation 
+   3) Configuration Management
+   4) Network Automation 
+   5) Infrastructure Orchestration (Complete product life cycle deployment).
+   
+- Ansible setup 
+  Install ansible on Linux/Unix system/server - This server considered as controle machine 
+  Then you execute playbook or ad-hoc commands from controle machine.
+  
+  ansible (Used for to run the ad-hoc command)
+  ansible-playbook (Used for to run the playbook)
+  ansible-doc     ((Used for to refer ansible modules)
+  
+  It is important which "ansible.cfg" file used
+  Inside "ansible.cfg" file you have define all environment.
+  
+  ansible --version (It provides all required details about ansible configuration).
+  
+  
+  
+Yum configuration base URL-  
+https://mirror.centos.org/centos/8-stream/BaseOS
+https://mirror.centos.org/centos/8-stream/AppStream
+===========================================================================================
+ - Setup Env - Ansible/Maven/Jenkins/Nexus/Git(GitHub)/SonarQube
+
+
+CentoS8 - Faced some depedencies issues ans due to that it's taking time to install and setup the env.
+Centos7 - using this image, we will create 3 VMs 
+
+Note: Before create new VMs, we will shutdown the CentOS1/2/3. 
+
+Create 3 virtual machine as per the resources.
+
+file -> "New Virtual Machine" -> Continue with defaukt option "Typical - Recommended" --> Slect "Installer disk_image_file (ISO)
+Click on "Next" and provide below details one by one.
+
+Name: centos7-01,centos7-02,centos7-03 
+user: lab 
+passwd: lab 
+NOte: root password also "lab".
+
+Provide your virtual machine name as below one by one.
+centos7-01 
+centos7-02
+centos7-03  
+Note: Resource Alocation - 3GB RAM, 40GB disk, 1 CPU.
+
+Specify the storage and click on "Next" 
+Storage = 40G 
+
+
+Then click on "Customize hardware" then setup memory 3 GB
+and finish.
+
+Name: centos7-01,centos7-02,centos7-03 
+user: lab 
+passwd: lab 
+NOte: root password also "lab".
+
+Virtual Machine name: centos7-01 /02 /03 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

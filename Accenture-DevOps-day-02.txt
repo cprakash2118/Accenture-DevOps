@@ -316,30 +316,29 @@ Ansible configuration details ("ansible.cfg" file).
 	
 	====================================
 	Playbook Creation/Execution.
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	  
-	  
-	  
-	  Note: **
-	  
-	 
 
+$ vim playbook_any_name.yaml
+---
+- name: Like a description about the play - 1st play 
+  hosts: web 
+ #hosts: web,db,lb,bs 
+  tasks:
+    - name: My 1st task 
+	  yum:
+	    name: httpd 
+		state: present 
    
-	 
+    - name: Start and enable service - This is my 2nd task.
+	  service:
+	    name: httpd
+		state: started 
+		enable: yes 
    
-   
-   
-   
+    - name: Deploy application. - This is 3rd task.
+	  copy:
+	    content: "This is my web server"
+		dest: /var/www/html/index.html 
+...
    
    
    

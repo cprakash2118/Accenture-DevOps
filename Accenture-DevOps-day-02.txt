@@ -89,7 +89,7 @@ centos7-03   - 192.168.14.134/24     acc.com
 
 Note: Using "ifconfig" command, collected the above information.
 
-
+ ###########################
 Step 1) Setup the hostname and configure the required environment.
  
  # hostnamectl set-hostname centos7-01.acc.com 
@@ -108,9 +108,10 @@ Step 1) Setup the hostname and configure the required environment.
  Note: Save above entries 
  
  
- 
+  ###########################
  Step 2) COnfigure repo and install required packages (software).
  
+ Perform below steps on control node (ANsile installed or installing)
  # yum install epel-release 
  # yum install ansible 
  
@@ -120,9 +121,24 @@ Step 1) Setup the hostname and configure the required environment.
  # ansible --version 
  Ansile 2.9 
  Python 2.7 
+
+
+ Perform below steps on managed hosts (centos-7-02 & centos-7-03)
+ # yum install epel-release 
+ # yum repolist 
  
  
- # 
+ Final network testing between all three nodes (centos-7-01/02/03)
+ 
+ From your control node 
+ # ping -c 2 centos-7-02 
+ # ping -c 2 centos-7-03 
+ 
+ 
+ ###########################
+ Step 3) 
+ 
+
  
  
  

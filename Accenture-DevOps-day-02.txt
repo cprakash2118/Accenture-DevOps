@@ -283,6 +283,49 @@ Ansible configuration details ("ansible.cfg" file).
 	prod, Stag, dev,non-prod,ip   - host group and "non-prod" is a parent of "Stage" and Dev".
 	"non-prod" is also host group.
 	
+	==============================
+	Ansible Ad-Hoc and Ansible Playbook execution. 
+	
+	$ ansible                       (Used for ansible ad-hoc command)
+	$ ansible-playbook              (Used of ansible playbook execution)
+	$ ansible-doc                   (used for to refer the module documentation used in playbook).
+	
+	
+	Note:  Your "ansible.cfg" and "inventory" file must be ready.
+	$ ansible <host_group> --list-hosts 
+	NOte: It will list out all hosts present in inventory file.
+	Example:-
+	  ansible all --list-hosts
+	  ansible web --list-hosts 
+	  ansible db --list-hosts 
+	  
+	  
+	  
+	$ ansible web -m ping    (It will ping to all the web servers, "web" is your host_group).
+	$ ansible db -m ping 
+	
+	$ ansible web -m yum -a "name=httpd state=present"
+	$ ansible web -m user -a "name=john state=present"
+	$ ansible web -m command -a "uptime"                   (For single command).
+	$ ansible web -m shell -a "uptime ; df -THP ; date"    (For multiple command).
+	
+	$ ansible-doc yum 
+	- Refer same as like manual page 
+	- Use search ans "/EXAMPLE" enter - More examples you can refer.
+	
+	
+	====================================
+	Playbook Creation/Execution.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	  
 	  

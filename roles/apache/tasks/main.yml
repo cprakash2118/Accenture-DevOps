@@ -1,0 +1,17 @@
+---
+# tasks file for apache
+- name: Apache installation
+  yum:
+    name: "{{ apache_package_name }}"
+    state: present
+
+- name: Start and enabled the apache services.
+  service:
+    name: "{{ apache_service_name }}"
+    state: started
+
+- name: Deplyoig application - index.html
+  copy:
+    content: "This is my web server - {{ inventory_hostname }}  \n"
+    dest: "{{ apache_dest_path }}"
+...

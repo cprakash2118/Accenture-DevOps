@@ -1,0 +1,5 @@
+---
+# vars file for firewalldapache_package_name: httpd
+firewall_package_name: firewalld
+firewalld_service_name: firewalld
+port_name: http

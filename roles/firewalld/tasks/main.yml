@@ -1,0 +1,19 @@
+---
+# tasks file for firewalld---
+- name: INstall firewalld 
+  yum:
+    name: "{{ firewall_package_name }}"
+    state: present
+
+- name: Start and enable the firewalld service.
+  service:
+     name: "{{ firewalld_service_name }}"
+     state: started 
+
+- name: To enable the port - http
+  firewalld:
+     service: "{{ port_name }}"
+     immediate: true
+     permanent: yes
+     state: enabled
+...

@@ -1,0 +1,4 @@
+group_name: unixadm
+user_name: eric
+path_name: /opt/jenkins
+apache_port: http

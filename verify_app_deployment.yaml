@@ -1,0 +1,16 @@
+---
+- name: Verify the application deployment.
+  hosts: myself 
+  become: false 
+  tasks:
+    - name: Verify the link.
+      uri:
+       url: http://centos-7-03.acc.com
+       return_content: yes
+       status_code: 200
+    - name: Verify the google app.
+      uri:
+       url: http://google.co.uk
+       return_content: yes
+       status_code: 200
+...

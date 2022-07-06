@@ -1,0 +1,48 @@
+---
+- name: Apache aeployment - 1st play
+  hosts: db
+  vars_files: 
+      - vars.yaml 
+  tasks: 
+     - name: Apache installation
+       yum:
+         name: "{{ apache_package_name }}"
+         state: present
+    
+     - name: Start and enabled the apache services.
+       service:
+         name: "{{ apache_service_name }}"
+         state: started 
+         
+     - name: Deplyoig application - index.html 
+       copy: 
+          content: "This is my web server - {{ inventory_hostname }}  \n"
+          dest: "{{ apache_dest_path }}"
+     
+     - name: INstall firewalld 
+       yum:
+         name: "{{ firewall_package_name }}"
+         state: present
+
+     - name: Start and enable the firewalld service.
+       service:
+          name: "{{ firewalld_service_name }}"
+          state: started 
+     
+     - name: To enable the port - http
+       firewalld:
+         service: "{{ port_name }}"
+         immediate: true
+         permanent: yes
+         state: enabled
+
+- name: Verify the apache deployment - 2nd play
+  hosts: myself 
+  become: false 
+  tasks:
+    - name: Verify the link.
+      uri:
+        url: http://centos-7-03.acc.com
+        return_content: yes
+        status_code: 200
+...

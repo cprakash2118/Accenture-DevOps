@@ -1,0 +1,15 @@
+---
+- name: Multiple service restart
+  hosts: web,db
+  vars:
+     - service_list:
+          - httpd
+          - rsyslog 
+          - sshd 
+  tasks:
+     - name: Restart multiple services.
+       service:
+         name: "{{ item }}"
+         state: restarted
+       loop: "{{ service_list }}"
+... 

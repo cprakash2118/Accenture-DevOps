@@ -339,8 +339,135 @@ $ vim playbook_any_name.yaml
 	    content: "This is my web server"
 		dest: /var/www/html/index.html 
 ...
-   
-   
+================================================================= Day 3 ============================================
+Quick Recap - 
+  Ansible
+  Product Name: Red Hat Ansible Automation Platform (RHAAP)
+  
+  - Ansible installation ( Before to install ansible)
+    1) INstalled OS - Centos7 
+	2) Verified and setup IP and hostname (Local resolution - /etc/hosts) 
+    3) Configure YUM repo for package installed (Might be required to installed some packages).
+    4) INstalling Ansible on one of the VM (called Control node/plane)
+	5) Rest all VMs only (1-3 steps) and these VMs or Servers called "Managed Host".
+	6) File "ansible.cfg" - Main configuration file.
+	7) Priority of "ansible configuration file - ansible.cfg".
+	   a) ANSIBLE_CONFIG=/path/ansible.cfg 
+	      eg: $ env | grep ANSIBLE_CONFIG    (No output)
+		      $ export ANSIBLE_CONFIG=/var/ansible.cfg    (Defining)
+		      $ env | grep ANSIBLE_CONFIG   (Verifying after defined).
+	   b) Current Working Directory:-
+	       eg: "ansible.cfg" file must be available on your current working dir.
+	   c) ".ansible.cfg" file must be available in user's home dir.
+	       eg: suppose you have logged in via "devops-user-02" then "/home/devops-user-02/.ansible.cfg" 
+	   d) Main configuration file.
+	       /etc/ansible/ansible.cfg 
+		   
+		 Note: Why "ansible.cfg" file used ?
+		      - "ansible.cfg" file is the main configuration file for Ansible.
+			  
+			  
+	    vim ansible.cfg 
+		[defaults]
+		 inventory = ./inventory 
+		 remote_user = devops-user-02 
+		 ask_pass  = False 
+		 log_path = ./ansible.log
+		 
+		[privilege_escalation]
+		become = True 
+		become_user = root
+		become_method = sudo 
+		become_ask_pass = false 
+		
+			  
+			  
+	8) Inventory file - It will keep the record of your servers (all managed hosts).
+        eg:
+        vim inventory 
+         [WebProd]
+          phxbookpas[01:20].acc.com 
+
+         [DBProd]
+         phxbookpdb[01:04].acc.com 
+
+         [CIServers]
+         blrcipnode[01:04].acc.com 
+
+         [prod:children]
+          WebProd
+		  DBProd
+		   
+	
+        Note: "host group" will conatain managed host (servers)
+		
+	 9) Ansible commands used.
+       $ ansible  --help 
+       $ ansible-doc  --help 
+       $ ansible-playbook --help 
+	   
+	 10 Ansible ad-hoc commands 
+	    $ ansible host_group -m ping 
+		eng 
+		  ansible all -m ping 
+       	   
+	 11) Ansible playbook 
+	    ---     (doc starter)
+		- name: Describe my setup
+          hosts: web 
+          tasks: 		  
+		or 
+		- hosts: web  
+          tasks: 
+             		  
+		
+		
+		
+		
+		...     (doc end)
+===========================
+- tasks 1st 
+
+Groups name: unixadm (primary group of eric)
+User name: eric 
+Directory need to be created /opt/jenkins
+owenr of the file/dir "/opt/jenkins" is eric and permission is 770
+
+Question 1st
+-task-1st 
+ Create Group - module used - "group" (ansible-doc group)
+ 
+-task-2nd 
+ Create user - module used - "user"  (ansible-doc user)
+ 
+-task-3rd 
+ Create directory - module used - "file" (ansible-doc file)
+
+
+- Question 2nd 
+
+Apache deployment (index.html page with this message - " This is my webserver - FQDN" 
+Firewalld 
+Verify need to be done.
+
+- Apache install   (package - httpd)
+- Start and enabled apache service. (service -httpd)
+- Firewall install  (package - firewalld)
+- Start and enabled firewall service. (service -firewalld)
+- Enable http port (module used - firewalld ( other infomration already given).
+- Veify using uri
+
+
+
+
+
+
+
+
+
+
+
+	  
    
    
    

@@ -1,0 +1,28 @@
+---
+- name: Block, Rescue and Always examples 
+  hosts: web
+  tasks:
+   - name: This is Block.
+     block:
+      - name: task-01 - Installation
+        yum: 
+          name: abc123
+          state: present
+        ignore_errors: yes
+
+      - name: task-02 - Service start
+        service:
+          name: xyz
+          state: started
+          enabled: yes
+
+     rescue:
+      - name: Display rescue.
+        debug:
+          msg: "My work - rescue"
+
+     always:
+       - name: Display my message.
+         debug:
+           msg: "My message - always"
+...

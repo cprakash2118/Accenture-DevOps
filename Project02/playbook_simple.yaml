@@ -1,0 +1,12 @@
+---
+- name: Testing facts
+  hosts: web 
+  gather_facts: false
+  tasks:
+    - name: Command execution.
+      shell: /usr/bin/timedatectl 
+      register: output
+
+    - name: Display 1st task 
+      debug:
+        var: output

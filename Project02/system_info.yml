@@ -1,0 +1,12 @@
+---
+- name: Collect system information
+  hosts: web
+  tasks:
+    - name: Display system information.
+      debug:
+        msg: > 
+          "IPaddress = {{ ansible_default_ipv4.address }}
+           Gateway   = {{ ansible_default_ipv4.gateway }} 
+           Interface = {{ ansible_default_ipv4.interface }} 
+           HwAddress = {{ ansible_default_ipv4.macaddress }}"
+...

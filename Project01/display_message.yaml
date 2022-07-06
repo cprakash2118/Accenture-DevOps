@@ -1,0 +1,27 @@
+---
+- name: Jenkins & CI/CD deployment on 4 node cluster.
+  hosts: web
+  tasks:
+    - name: TASK-01 - Display 1st message.
+      debug:
+        msg: "This is my web server - {{ inventory_hostname }}"
+
+    - name: TASK-02 - Verify the last task - /opt/jenkins 
+      stat:
+        path: /opt/jenkins2
+      register: output_jenkins_dir
+
+    - name: TASK-03 - Only display of output_jenkins_dir
+      debug:
+        var: output_jenkins_dir
+
+    - name: Create dir 
+      file:
+        path: /opt/maven
+        owner: root
+        group: unixadm
+        mode: '0644'
+        state: directory
+      when: output_jenkins_dir.stat.exists == false
+      
+...

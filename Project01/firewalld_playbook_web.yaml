@@ -1,0 +1,21 @@
+---
+- name: Firewall to be enabled for web server.
+  hosts: web 
+  tasks:
+    - name: Install firewalld 
+      yum:
+       name: firewalld
+       state: present
+
+    - name: Start and enable service.
+      service:
+       name: firewalld
+       state: started 
+    
+    - name: Enable the http port 
+      firewalld:
+         service: http
+         immediate: true 
+         permanent: yes
+         state: enabled
+...

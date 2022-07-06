@@ -1,0 +1,23 @@
+---
+- name: This is my 1st play
+  hosts: web
+  vars_files:
+      - myvars.yml
+  tasks:
+    - name: Create Group
+      group:
+        name: "{{ group_name }}"
+        state: present 
+    
+    - name: User creation 
+      user:
+        name: "{{ user_name }}"
+        state: present
+    - name: Change file ownership, group and permissions
+      file:
+        path: "{{ path_name }}"
+        owner: "{{ user_name }}"
+        group: "{{ group_name }}"
+        mode: '0770'
+        state: directory
+...

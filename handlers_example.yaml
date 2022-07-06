@@ -1,0 +1,19 @@
+---
+- name: This is an handlers example.
+  hosts: web
+  tasks:
+      - name: Task-01 - Command execution.
+        shell: date 
+        changed_when: false
+        register: output
+        notify:
+             - task-01_handler
+     
+      - name: Task-02 - Display just message
+        debug:
+          var: output
+  handlers:
+      - name: task-01_handler
+        debug:
+          msg: "This is handler calling"
+...

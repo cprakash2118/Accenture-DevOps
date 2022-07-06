@@ -456,6 +456,54 @@ Verify need to be done.
 - Start and enabled firewall service. (service -firewalld)
 - Enable http port (module used - firewalld ( other infomration already given).
 - Veify using uri
+===========================================
+vim playbook.yml 
+---
+- name: Display exam
+  hosts: web 
+  tasks:
+    - name: Display my message 
+	  debug:
+	    msg: "This is my message - {{ inventory_hostname }}"
+    
+	- name: 2nd task   
+	  shell: /usr/bin/systemctl status sshd 
+	  register: output_var
+	  
+	- name: Display output of previous task.
+	  debug:
+	    var: output_var 
+		
+...
+
+vim ansible.cfg 
+[defaults]
+ inventory = ./inventory 
+ remote_user = devops-user-02 
+ ask_pass  = False 
+ log_path = ./ansible.log
+ 
+[privilege_escalation]
+become = True 
+become_user = root
+become_method = sudo 
+become_ask_pass = false 
+
+========
+vim inventory 
+[web]
+centos-7-02.acc.com 
+
+[db]
+centos-7-03.acc.com 
+
+
+
+
+
+
+	    
+	   
 
 
 

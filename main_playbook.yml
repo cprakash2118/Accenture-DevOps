@@ -1,0 +1,19 @@
+---
+- name: Calling role based automation 
+  hosts: web
+  pre_tasks: 
+     - name: Pre Checks 
+       debug:
+         msg: "This is my pre-checks"
+
+  roles:
+     - apache 
+  tasks:
+     - name: Some main task 
+       debug:
+         msg: "This is main task"
+  post_tasks: 
+     - name: Some post task 
+       debug:
+         msg: "This is post task"
+...

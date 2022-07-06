@@ -1,0 +1,7 @@
+---
+- src: http://centos-7-02/apache.tar.gz
+  name: apache
+
+- src: http://centos-7-02/firewalld.tar.gz
+  name: firewalld
+...

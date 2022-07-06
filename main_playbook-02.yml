@@ -1,0 +1,6 @@
+---
+- name: Calling role based automation 
+  hosts: web
+  roles:
+     - apache 
+...

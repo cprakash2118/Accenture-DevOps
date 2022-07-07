@@ -85,7 +85,32 @@ GitOps - GIt Operations and Concepts.
 	   
 	   Git configurations:-
 	   
-	   
+	   git config --global user.name "Any name" 
+	   git config --global user.email "cprakash@abc.com 
+	   git config --global push.default simple 
+
+       git add -  "git add filename" or "git add ."
+	            note: filename must be absolte path 
+				
+				git add 
+				git rm 
+				git commit 
+				git push 
+				
+				git clone 
+				git status 
+				git branch 
+				git checkout 
+				
+				
+	Creating git branch 
+	$ git clone https://github.com/cprakash2118/Accenture-DevOPs 
+	$ git checkout master 
+	Do the changes 
+	$ git checkout -b data
+	Then switch to new branch 
+    then commit new brach to your remote_repo
+	$ git push -u origin data
 	   
 	   
 	   

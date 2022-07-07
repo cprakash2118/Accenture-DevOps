@@ -111,6 +111,29 @@ GitOps - GIt Operations and Concepts.
 	Then switch to new branch 
     then commit new brach to your remote_repo
 	$ git push -u origin data
+	
+	
+==========================================
+ProductV.0  Main Branch 
+
+
+ProductV.1  New commit Branch 
+  - ansible.cfg 
+  - inventory 
+  - playbook_user_group_creation.yml 
+
+
+  In this playbook you mention only one user and one group
+ then commit 
+
+Then Again git clone and do modificaton and add debug modules for collect "Hw details) 
+
+
+ ONce all done, then more to main branch 
+
+
+
+
 	   
 	   
 	   

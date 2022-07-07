@@ -1,0 +1,97 @@
+
+DevOps - Development and Operation teams are working togathers for command projects.
+Ansible - Automation Platform 
+         1) Application deployment (index.html/php) 
+         2) Configuration Management 
+		 3) WorkFlow automation 
+		 4) Network automation 
+		 5) Can be used for orchestration tools.
+		 - yaml or JSON (templates and static files)
+		 - All playbooks written in yaml/yml.
+		 - Playbooks - multiple play, multiple tasks, variables, conditions, handlers, block-rescue-always and roles.
+		 
+GitOps - GIt Operations and Concepts.
+ Code repo 
+  1) Centerlizaed remote repo (remote location to keepp all your codes/files/templates).
+  2) Distributed Version Control system (DVCS)
+     - Code repo on remote location 
+	 - Code repo also on location place 
+	 
+	 git      - utility for manage code, and it help to do the same on local and remote location.
+	 github   - It's DVCS (https://github.com)
+	 
+	 user ID/password - Cridentials (https or ssh)
+	 
+	 Working tree 
+	 
+	 Developers team (systemd, Configration, Disk management, Package Management etc)
+	 
+	 RHEL6.0 -> RHEL6.1 -> 6.2 -> 6.3 -> 6.4 ..... -> 6.10 (Can be sttoped or further move- depends on Vendor)
+	 Appx - 3-4 years 
+	 
+	 RHEL7.0 -> RHEL7.1 -> 7.2 -> 7.3 .............. -> 7.8 (Continue)
+	 
+	 Some additional requirment from many customers.
+	 
+	 RHEL8.0 -> RHEL8.1 -> 8.2 .......... -> 8.6 (Continue)
+	 
+	 RHEL9.0 -> ONly 1 relese 
+	 
+	 
+	 modified: File has been modified (Copied and done changes directly)
+	 Staged: The modified file has been added to the list of commit (Still not committed to main repo - remote repo)
+	 committed: The modified file bas been committed to local repository.
+	 
+	 
+	 DVCS - github (Two repositories - Remote and other one is local)
+	 
+	 Dev-01 -> cloned (RHEL8.6 repository)  - Disk management related component 
+	 Dev-02 -> cloned (RHEL8.6 repository)  - systemd component
+	
+	NOte: 
+	   - Both developers are from different teams 
+	   - Working on different components on same working tree/branch 
+	   - clone the repository (RHEL8.6)
+	     It mean now RHEL8.6 repository available on their local system (It's now distributed).
+	   - Once work has been done now what next.
+	      Might be some update on existing file and few files added and few files deleted.
+	   
+	   
+	   - Go into that repo 
+	   $ cd RHEL8.6
+	   $ git checkout main or git checkout master 
+	   Note: Here all recent updates also available (Remote repo and local repo exactly same)
+	   $ modify or Add or Delete files (Changes has been done).  (vim / cp /rm )
+	   $ Now add those recent changes to Stage area.             (git status, git add file_name , if multiple files to be added to stage then repete this git add file_name or "git add .")
+	   $ commit the stage changes ( git status - it shows all green, then git commit -m "34567:- New changes has been done"
+	   
+	   Now all your changes in local repository.
+	   
+	   
+	   
+	   $ git push (to the specific branch).
+	   
+	     
+		    Remote repository (Upstream) 
+			     | 
+			Local repository
+			     |
+			 Staging Area 
+			     |
+			 Workig Tree 
+	   
+	   
+	   
+	   
+	   Git configurations:-
+	   
+	   
+	   
+	   
+	   
+	 
+	 
+	 
+	 
+	 
+	 
